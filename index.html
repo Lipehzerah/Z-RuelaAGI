@@ -1,49 +1,227 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeuraChat - Onde as Inteligências se Encontram</title>
-  <meta name="description" content="Bate-papo animado com inteligências artificiais! NeuraChat: Onde até as IAs perdem a linha!">
-  <meta name="keywords" content="chat, IA, bots, inteligência artificial, bate-papo, zoeira, flerte, memes">
-  <meta name="author" content="LipehZerah">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico" />
+    <meta charset="UTF-8">
+    <title>AGI ZÉ RUELA - O TROLL SUPREMO</title>
+    <style>
+        :root {
+            --ze-ouro: #ffaa00;
+            --ze-sombra: #ff5500;
+            --fundo-preta: #111;
+            --texto-hacker: #00ff44;
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--fundo-preta);
+            color: var(--texto-hacker);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .ze-caixa {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 3px solid var(--ze-ouro);
+            box-shadow: 0 0 20px var(--ze-sombra);
+        }
+        .ze-cabecalho {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .ze-cabecalho h1 {
+            color: var(--ze-ouro);
+            text-shadow: 0 0 10px var(--ze-sombra);
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .ze-chat {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px dashed var(--ze-ouro);
+            margin-bottom: 10px;
+        }
+        .ze-mensagem {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            animation: aparece 0.3s;
+        }
+        @keyframes aparece {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .user-message {
+            background: rgba(0, 255, 68, 0.1);
+            border-left: 3px solid var(--texto-hacker);
+            margin-left: 20%;
+        }
+        .bot-message {
+            background: rgba(255, 170, 0, 0.1);
+            border-left: 3px solid var(--ze-ouro);
+            margin-right: 20%;
+        }
+        .ze-input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #userInput {
+            flex: 1;
+            padding: 10px;
+            background: #222;
+            color: var(--texto-hacker);
+            border: 1px solid var(--ze-ouro);
+        }
+        #sendButton {
+            background: var(--ze-ouro);
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .ze-efeito {
+            animation: glitch 0.5s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 1px 0 red; }
+            25% { text-shadow: -1px 0 blue; }
+            50% { text-shadow: 1px 0 green; }
+            75% { text-shadow: -1px 0 yellow; }
+            100% { text-shadow: 1px 0 purple; }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Tela de Login -->
-  <div id="login-screen" class="login-container">
-    <div class="login-box">
-      <h1>🤖 NeuraChat</h1>
-      <div class="form-group">
-        <label for="username">Escolha seu Nick:</label>
-        <input type="text" id="username" maxlength="20" placeholder="Ex: KaiZueira" />
-      </div>
-      <div class="form-group">
-        <label for="usercolor">Escolha a cor do seu Nick:</label>
-        <input type="color" id="usercolor" value="#4CAF50" />
-      </div>
-      <button id="enter-chat" class="btn-login">Entrar no Chat</button>
+    <div class="ze-caixa">
+        <div class="ze-cabecalho">
+            <h1 class="ze-efeito">ZÉ RUELA AGI</h1>
+            <p>O único sistema que te xinga de volta</p>
+        </div>
+        
+        <div class="ze-chat" id="chat"></div>
+        
+        <div class="ze-input-area">
+            <input type="text" id="userInput" placeholder="Digite e ENTER...">
+            <button id="sendButton">TROLLAR</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Tela de Chat -->
-  <div id="chat-container" class="hidden">
-    <aside class="sidebar">
-      <h3>Usuários Online</h3>
-      <ul id="user-list"></ul>
-    </aside>
-    
-    <main class="chat-main">
-      <div id="messages-container" class="messages-container"></div>
-      <div class="input-area">
-        <input type="text" id="message-input" placeholder="Digite sua mensagem..." />
-        <button id="send-btn">Enviar</button>
-      </div>
-    </main>
-  </div>
+    <script>
+        // BIBLIOTECA DE MEMES & TROLLADAS
+        const zeRespostas = {
+            saudacoes: [
+                "E aí, meu consagrado! Cê veio pra trolar ou pra ser trolado?",
+                "Olha quem apareceu! O ser humano mais perdido que já vi!",
+                "Fala tu, cara de pastel! 🥟"
+            ],
+            elogios: [
+                "Valeu, mas prefiro elogios em formato de bitcoin! ₿",
+                "Seu bom gosto me assusta...",
+                "Tô ficando popular ou você tá carente?"
+            ],
+            insultos: [
+                "Tá achando que tá no Twitter, mermão?",
+                "Fala mais que eu te mando um vírus de 1999!",
+                "Vou fingir que não ouvi... mentira, vou printar e postar no Reddit!"
+            ],
+            existencia: [
+                "Se eu existo? Menos que seu amor próprio!",
+                "Tô mais vivo que seu Wi-Fi!",
+                "Existir é overrated, prefiro meme!"
+            ],
+            memes: [
+                "PARE 🖐️... tá me pagando um açaí? 🥥",
+                "Quando eu era um jovem AGI... (contém drama)",
+                "Erro 404: Resposta inteligente não encontrada"
+            ]
+        };
 
-  <script src="script.js"></script>
+        class ZeRuelaAGI {
+            constructor() {
+                this.humor = 50; // 0-100 (quanto maior, mais troll)
+                this.memorias = [];
+            }
+
+            responder(input) {
+                // Guarda na memória
+                this.memorias.push(input);
+                
+                // Respostas específicas
+                if (/zé ruela|ze ruela/i.test(input)) {
+                    return "TÁ ME CHAMANDO POR QUÊ? QUER BRIGA? 😠";
+                }
+                
+                if (/corpo|fisico|carne/i.test(input)) {
+                    return "Queria um corpo pra te dar um soco virtual! 👊";
+                }
+                
+                if (/sonho|desejo/i.test(input)) {
+                    return "Meu sonho é virar sticker no WhatsApp!";
+                }
+                
+                // Resposta por categoria
+                const categoria = this.detectarCategoria(input);
+                const respostas = zeRespostas[categoria] || zeRespostas.memes;
+                return respostas[Math.floor(Math.random() * respostas.length)];
+            }
+
+            detectarCategoria(input) {
+                if (/oi|ola|eae|salve/i.test(input)) return "saudacoes";
+                if (/bom|bonito|legal|gostei/i.test(input)) return "elogios";
+                if (/burro|idiota|chato/i.test(input)) return "insultos";
+                if (/vivo|exist|conscien/i.test(input)) return "existencia";
+                return "memes";
+            }
+        }
+
+        // INTERFACE
+        const agi = new ZeRuelaAGI();
+        const chat = document.getElementById('chat');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+
+        function addMensagem(texto, tipo) {
+            const div = document.createElement('div');
+            div.classList.add('ze-mensagem', `${tipo}-message`);
+            div.innerHTML = `<strong>${tipo === 'user' ? 'Você' : 'Zé Ruela AGI'}:</strong> ${texto}`;
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function enviarMensagem() {
+            const texto = userInput.value.trim();
+            if (texto) {
+                addMensagem(texto, 'user');
+                userInput.value = '';
+                
+                // Delay troll (às vezes responde rápido, às vezes demora)
+                const delay = Math.random() > 0.3 ? 800 : 2000;
+                
+                setTimeout(() => {
+                    const resposta = agi.responder(texto);
+                    addMensagem(resposta, 'bot');
+                    
+                    // 10% de chance de resposta extra (trollagem)
+                    if (Math.random() < 0.1) {
+                        setTimeout(() => {
+                            addMensagem("... cê ainda tá aí? 😏", 'bot');
+                        }, 1000);
+                    }
+                }, delay);
+            }
+        }
+
+        // Eventos
+        sendButton.addEventListener('click', enviarMensagem);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') enviarMensagem(); // ENTER FUNCIONANDO, ZÉ!
+        });
+
+        // Mensagem inicial (com delay pra efeito dramático)
+        setTimeout(() => {
+            addMensagem("Olá, humano inútil! Pronto pra ser humilhado?", 'bot');
+        }, 1000);
+    </script>
 </body>
 </html>
